@@ -1,0 +1,1023 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* 移动端优化 */
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    /* iPhone页面尺寸限制 */
+    max-width: 414px;
+    margin: 0 auto;
+    background: #f8f9fa;
+}
+
+/* 应用容器 */
+.app-container {
+    width: 100%;
+    max-width: 414px;
+    min-height: 100vh;
+    background: #fff;
+    position: relative;
+    margin: 0 auto;
+    /* 移动端安全区域 */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    /* iPhone页面比例 */
+    aspect-ratio: 9/19.5;
+    min-height: 100vh;
+    /* iPhone页面优化 */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* iPhone视觉优化 */
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* iPhone页面视觉优化 */
+@media (min-width: 415px) {
+    .app-container {
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+}
+
+/* 顶部搜索栏 */
+.search-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 12px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* 移动端状态栏适配 */
+    padding-top: max(12px, env(safe-area-inset-top) + 8px);
+    /* iPhone页面宽度限制 */
+    width: 100%;
+    max-width: 414px;
+    margin: 0 auto;
+    /* iPhone状态栏和刘海屏适配 */
+    padding-left: max(16px, env(safe-area-inset-left) + 16px);
+    padding-right: max(16px, env(safe-area-inset-right) + 16px);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 10px 16px;
+    backdrop-filter: blur(10px);
+    /* 移动端触摸优化 */
+    min-height: 44px;
+}
+
+.search-icon {
+    color: #667eea;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.mic-icon {
+    color: #667eea;
+    margin-left: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 内容区域 */
+.content-area {
+    padding-bottom: 90px;
+    /* 移动端内容区域优化 */
+    padding-left: 16px;
+    padding-right: 16px;
+    /* iPhone页面内容优化 */
+    width: 100%;
+    max-width: 414px;
+    margin: 0 auto;
+}
+
+/* 页面切换 */
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+    /* iPhone页面优化 */
+    width: 100%;
+    max-width: 414px;
+    margin: 0 auto;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* iPhone页面切换动画优化 */
+@media (max-width: 414px) {
+    .page {
+        animation: fadeIn 0.2s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* 观点档案馆页面 */
+#archive-page {
+    padding: 16px 0;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    /* 移动端标题优化 */
+    padding-left: 4px;
+}
+
+/* 热门观点榜 */
+.hot-topics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.topic-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-left: 3px solid;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* 移动端触摸优化 */
+    min-height: 80px;
+}
+
+.topic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.topic-card.verified-true {
+    border-left-color: #4CAF50;
+}
+
+.topic-card.verified-partial {
+    border-left-color: #FF9800;
+}
+
+.topic-card.verified-false {
+    border-left-color: #F44336;
+}
+
+.topic-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.topic-status i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.verified-true .topic-status {
+    color: #4CAF50;
+}
+
+.verified-partial .topic-status {
+    color: #FF9800;
+}
+
+.verified-false .topic-status {
+    color: #F44336;
+}
+
+.topic-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    /* 移动端文字优化 */
+    line-height: 1.4;
+}
+
+.topic-card p {
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.topic-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.views {
+    color: #999;
+    font-size: 12px;
+}
+
+/* 分类导航 */
+.category-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding: 4px 0;
+    /* 移动端滚动优化 */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* iPhone触摸优化 */
+    touch-action: pan-x;
+    scroll-behavior: smooth;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    min-width: 70px;
+    /* 移动端触摸优化 */
+    min-height: 60px;
+    touch-action: manipulation;
+}
+
+.category-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.05);
+}
+
+.category-item i {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.category-item span {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* 观点列表 */
+.opinions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opinion-card {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease;
+    /* 移动端触摸优化 */
+    min-height: 90px;
+    touch-action: manipulation;
+}
+
+.opinion-card:hover {
+    transform: translateY(-2px);
+}
+
+.opinion-image {
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.opinion-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.opinion-content {
+    flex: 1;
+}
+
+.opinion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.opinion-header h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    margin-right: 10px;
+    line-height: 1.3;
+}
+
+.verification-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.verification-badge.verified-true {
+    background: #e8f5e8;
+    color: #4CAF50;
+}
+
+.verification-badge.verified-partial {
+    background: #fff3e0;
+    color: #FF9800;
+}
+
+.verification-badge.verified-false {
+    background: #ffebee;
+    color: #F44336;
+}
+
+.opinion-content p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.opinion-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 查个究竟页面 */
+#verify-page {
+    padding: 16px 0;
+}
+
+.verify-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.verify-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.verify-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* 表单样式 */
+.verify-form {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* 分类选择器 */
+.category-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 12px;
+}
+
+.category-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.category-option:hover {
+    background: #e9ecef;
+}
+
+.category-option.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.category-option i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.category-option span {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 内容输入 */
+.content-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.content-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* 上传区域 */
+.upload-area {
+    display: flex;
+    gap: 12px;
+}
+
+.upload-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px dashed #dee2e6;
+}
+
+.upload-item:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.upload-item i {
+    font-size: 24px;
+    color: #667eea;
+    margin-bottom: 8px;
+}
+
+.upload-item span {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* 复选框样式 */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 提交按钮 */
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* 核查结果 */
+.verification-result {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.result-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.result-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.result-status.verified-true {
+    background: #e8f5e8;
+    color: #4CAF50;
+}
+
+.result-status.verified-partial {
+    background: #fff3e0;
+    color: #FF9800;
+}
+
+.result-status.verified-false {
+    background: #ffebee;
+    color: #F44336;
+}
+
+.result-status.verified-unknown {
+    background: #f3e5f5;
+    color: #9C27B0;
+}
+
+.result-content p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.evidence-list, .ai-analysis {
+    margin-bottom: 20px;
+}
+
+.evidence-list h4, .ai-analysis h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.evidence-list ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.evidence-list li {
+    padding: 8px 0;
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+}
+
+.evidence-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.ai-analysis p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 结果操作按钮 */
+.result-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.retry-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.retry-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.retry-btn:active {
+    transform: translateY(0);
+}
+
+/* 我的订阅页面 */
+#subscription-page {
+    padding: 20px;
+}
+
+.subscription-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.subscription-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subscription-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.subscription-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.subscription-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subscription-content h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.subscription-content p {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.update-time {
+    color: #999;
+    font-size: 12px;
+}
+
+.unsubscribe-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.unsubscribe-btn:hover {
+    background: #ff3742;
+    transform: translateY(-1px);
+}
+
+.add-subscription {
+    text-align: center;
+}
+
+.add-subscription-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-subscription-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    /* iPhone页面宽度限制 */
+    width: 100%;
+    max-width: 414px;
+    /* iPhone底部安全区域适配 */
+    padding-bottom: max(12px, env(safe-area-inset-bottom) + 12px);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+.nav-item.active {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.nav-item span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* 加载遮罩 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 414px;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.loading-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-content p {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* iPhone页面专用样式 */
+@media (max-width: 414px) {
+    body {
+        max-width: 100%;
+    }
+    
+    .app-container {
+        max-width: 100%;
+        aspect-ratio: auto;
+    }
+    
+    .search-header {
+        max-width: 100%;
+    }
+    
+    .bottom-nav {
+        max-width: 100%;
+    }
+    
+    .loading-overlay {
+        max-width: 100%;
+    }
+}
+
+/* 桌面端居中显示 */
+@media (min-width: 415px) {
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .app-container {
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        overflow: hidden;
+        height: 90vh;
+        max-height: 800px;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .search-header {
+        padding: 12px 15px;
+    }
+    
+    .search-container {
+        padding: 10px 16px;
+    }
+    
+    #archive-page, #verify-page, #subscription-page {
+        padding: 15px;
+    }
+    
+    .verify-form {
+        padding: 20px;
+    }
+    
+    .category-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .upload-area {
+        flex-direction: column;
+    }
+    
+    .topic-card, .opinion-card, .subscription-item {
+        padding: 15px;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

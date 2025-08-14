@@ -1,0 +1,337 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查个究竟 - 事实核查工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="app-container">
+        <!-- 顶部搜索栏 -->
+        <div class="search-header">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="搜索观点、话题、事件...">
+                <i class="fas fa-microphone mic-icon"></i>
+            </div>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="content-area">
+            <!-- 观点档案馆页面 -->
+            <div class="page active" id="archive-page">
+                <!-- 热门观点榜 -->
+                <div class="hot-topics-section">
+                    <h2 class="section-title">🔥 热门观点榜</h2>
+                    <div class="hot-topics-list">
+                        <div class="topic-card verified-true">
+                            <div class="topic-status">
+                                <i class="fas fa-check-circle"></i>
+                                <span>真实</span>
+                            </div>
+                            <h3>新冠疫苗安全性得到科学验证</h3>
+                            <p>多项大型临床试验证实，新冠疫苗具有良好的安全性和有效性...</p>
+                            <div class="topic-meta">
+                                <span class="category">健康</span>
+                                <span class="views">2.3万次查看</span>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-card verified-partial">
+                            <div class="topic-status">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>部分真实</span>
+                            </div>
+                            <h3>5G技术对人体有害</h3>
+                            <p>5G辐射水平远低于国际安全标准，但长期影响仍需更多研究...</p>
+                            <div class="topic-meta">
+                                <span class="category">科技</span>
+                                <span class="views">1.8万次查看</span>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-card verified-false">
+                            <div class="topic-status">
+                                <i class="fas fa-times-circle"></i>
+                                <span>虚假</span>
+                            </div>
+                            <h3>喝醋能治疗高血压</h3>
+                            <p>没有科学证据表明醋能治疗高血压，应遵医嘱用药...</p>
+                            <div class="topic-meta">
+                                <span class="category">健康</span>
+                                <span class="views">1.2万次查看</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分类导航 -->
+                <div class="category-nav">
+                    <div class="category-item active" data-category="all">
+                        <i class="fas fa-th-large"></i>
+                        <span>全部</span>
+                    </div>
+                    <div class="category-item" data-category="health">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>健康</span>
+                    </div>
+                    <div class="category-item" data-category="tech">
+                        <i class="fas fa-microchip"></i>
+                        <span>科技</span>
+                    </div>
+                    <div class="category-item" data-category="society">
+                        <i class="fas fa-users"></i>
+                        <span>社会</span>
+                    </div>
+                    <div class="category-item" data-category="entertainment">
+                        <i class="fas fa-film"></i>
+                        <span>娱乐</span>
+                    </div>
+                </div>
+
+                <!-- 观点列表 -->
+                <div class="opinions-list">
+                    <div class="opinion-card" data-category="health">
+                        <div class="opinion-image">
+                            <img src="https://via.placeholder.com/80x80/4CAF50/FFFFFF?text=健康" alt="健康话题">
+                        </div>
+                        <div class="opinion-content">
+                            <div class="opinion-header">
+                                <h4>维生素C能预防感冒吗？</h4>
+                                <span class="verification-badge verified-true">真实</span>
+                            </div>
+                            <p>维生素C确实能增强免疫力，但预防感冒效果有限...</p>
+                            <div class="opinion-footer">
+                                <span class="time">2小时前</span>
+                                <span class="likes"><i class="fas fa-thumbs-up"></i> 156</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="opinion-card" data-category="tech">
+                        <div class="opinion-image">
+                            <img src="https://via.placeholder.com/80x80/2196F3/FFFFFF?text=科技" alt="科技话题">
+                        </div>
+                        <div class="opinion-content">
+                            <div class="opinion-header">
+                                <h4>AI会取代人类工作吗？</h4>
+                                <span class="verification-badge verified-partial">部分真实</span>
+                            </div>
+                            <p>AI会改变工作方式，但创造性和情感类工作难以替代...</p>
+                            <div class="opinion-footer">
+                                <span class="time">4小时前</span>
+                                <span class="likes"><i class="fas fa-thumbs-up"></i> 89</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="opinion-card" data-category="society">
+                        <div class="opinion-image">
+                            <img src="https://via.placeholder.com/80x80/FF9800/FFFFFF?text=社会" alt="社会话题">
+                        </div>
+                        <div class="opinion-content">
+                            <div class="opinion-header">
+                                <h4>房价会持续上涨吗？</h4>
+                                <span class="verification-badge verified-false">虚假</span>
+                            </div>
+                            <p>房价受多种因素影响，简单预测缺乏科学依据...</p>
+                            <div class="opinion-footer">
+                                <span class="time">6小时前</span>
+                                <span class="likes"><i class="fas fa-thumbs-up"></i> 234</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 查个究竟页面 -->
+            <div class="page" id="verify-page">
+                <div class="verify-header">
+                    <h2>🔍 查个究竟</h2>
+                    <p>上传你想核查的信息，AI帮你分析真伪</p>
+                </div>
+
+                <div class="verify-form">
+                    <div class="form-group">
+                        <label>选择话题分类</label>
+                        <div class="category-selector">
+                            <div class="category-option" data-category="health">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>健康</span>
+                            </div>
+                            <div class="category-option" data-category="tech">
+                                <i class="fas fa-microchip"></i>
+                                <span>科技</span>
+                            </div>
+                            <div class="category-option" data-category="society">
+                                <i class="fas fa-users"></i>
+                                <span>社会</span>
+                            </div>
+                            <div class="category-option" data-category="entertainment">
+                                <i class="fas fa-film"></i>
+                                <span>娱乐</span>
+                            </div>
+                            <div class="category-option" data-category="other">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>其他</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>输入要核查的内容</label>
+                        <textarea class="content-input" placeholder="请描述你想核查的观点、说法或事件..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>上传相关材料（可选）</label>
+                        <div class="upload-area">
+                            <div class="upload-item">
+                                <i class="fas fa-image"></i>
+                                <span>截图</span>
+                            </div>
+                            <div class="upload-item">
+                                <i class="fas fa-link"></i>
+                                <span>链接</span>
+                            </div>
+                            <div class="upload-item">
+                                <i class="fas fa-video"></i>
+                                <span>视频</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="anonymous">
+                            <span class="checkmark"></span>
+                            匿名提交
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="follow-up">
+                            <span class="checkmark"></span>
+                            关注此问题的进展
+                        </label>
+                    </div>
+
+                    <button class="submit-btn" id="submit-verify">
+                        <i class="fas fa-search"></i>
+                        开始核查
+                    </button>
+                </div>
+
+                <!-- 核查结果示例 -->
+                <div class="verification-result" id="verification-result" style="display: none;">
+                    <div class="result-header">
+                        <h3>核查结果</h3>
+                        <span class="result-status verified-true">真实</span>
+                    </div>
+                    <div class="result-content">
+                        <p>根据我们的核查，您提供的信息是<strong>真实的</strong>。</p>
+                        <div class="evidence-list">
+                            <h4>证据来源：</h4>
+                            <ul>
+                                <li>权威媒体报道</li>
+                                <li>官方数据统计</li>
+                                <li>专家观点支持</li>
+                            </ul>
+                        </div>
+                        <div class="ai-analysis">
+                            <h4>AI分析：</h4>
+                            <p>通过分析多个可信信息源，该信息与事实相符，可信度较高。</p>
+                        </div>
+                        <div class="result-actions">
+                            <button class="retry-btn" id="retry-verification">
+                                <i class="fas fa-redo"></i>
+                                重新核查
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 我的订阅页面 -->
+            <div class="page" id="subscription-page">
+                <div class="subscription-header">
+                    <h2>📱 我的订阅</h2>
+                    <p>关注你感兴趣的话题，获取最新核查结果</p>
+                </div>
+
+                <div class="subscription-list">
+                    <div class="subscription-item">
+                        <div class="subscription-content">
+                            <h4>新冠疫苗相关</h4>
+                            <p>关注疫苗安全性、有效性等话题</p>
+                            <span class="update-time">最新更新：2小时前</span>
+                        </div>
+                        <div class="subscription-actions">
+                            <button class="unsubscribe-btn">取消关注</button>
+                        </div>
+                    </div>
+
+                    <div class="subscription-item">
+                        <div class="subscription-content">
+                            <h4>5G技术发展</h4>
+                            <p>关注5G技术应用、安全性等话题</p>
+                            <span class="update-time">最新更新：1天前</span>
+                        </div>
+                        <div class="subscription-actions">
+                            <button class="unsubscribe-btn">取消关注</button>
+                        </div>
+                    </div>
+
+                    <div class="subscription-item">
+                        <div class="subscription-content">
+                            <h4>健康养生</h4>
+                            <p>关注健康谣言、科学养生等话题</p>
+                            <span class="update-time">最新更新：3天前</span>
+                        </div>
+                        <div class="subscription-actions">
+                            <button class="unsubscribe-btn">取消关注</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add-subscription">
+                    <button class="add-subscription-btn">
+                        <i class="fas fa-plus"></i>
+                        添加新订阅
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="bottom-nav">
+            <div class="nav-item active" data-page="archive-page">
+                <i class="fas fa-archive"></i>
+                <span>观点档案馆</span>
+            </div>
+            <div class="nav-item" data-page="verify-page">
+                <i class="fas fa-search"></i>
+                <span>查个究竟</span>
+            </div>
+            <div class="nav-item" data-page="subscription-page">
+                <i class="fas fa-bell"></i>
+                <span>我的订阅</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载提示 -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>AI正在核查中，请稍候...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
